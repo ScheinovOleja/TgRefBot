@@ -71,7 +71,10 @@ async def get_all_user(message: Message, state: FSMContext):
     with open('all_user.csv', 'w', encoding='utf-8') as file:
         writer = csv.writer(file, delimiter=';')
         for user in AllUsers.select():
-            writer.writerow([user.tg_id])
+            try:
+                writer.writerow([user.tg_id])
+            except Exception as err:
+                continue
     file = InputFile('all_user.csv', filename='all_user.csv')
     await message.answer_document(file)
 
@@ -81,6 +84,9 @@ async def get_suit_user(message: Message, state: FSMContext):
     with open('suit_user.csv', 'w', encoding='utf-8') as file:
         writer = csv.writer(file, delimiter=';')
         for user in MembersAirdrop.select():
-            writer.writerow([user.user.tg_id])
+            try:
+                writer.writerow([user.user.tg_id])
+            except Exception as err:
+                continue
     file = InputFile('suit_user.csv', filename='suit_user.csv')
     await message.answer_document(file)
