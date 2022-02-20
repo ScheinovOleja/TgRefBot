@@ -1,0 +1,12 @@
+[BOT]
+TOKEN = 1753538352:AAGW-cAk2fAT4n5rzp5tnljZIeWa6mD9udo
+
+[DATABASE]
+database =
+user =
+password =
+host = localhost
+port = 5432
+
+[ADMIN]
+id_admin =
