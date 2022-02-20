@@ -49,7 +49,7 @@ async def get_id_channel(message: Message, state: FSMContext):
         link = await bot.create_chat_invite_link(channel.id, creates_join_request=True)
         Groups(
             id_group=str(channel.id),
-            link_group=link,
+            link_group=link.invite_link,
             name_group=channel.full_name
         )
         commit()
