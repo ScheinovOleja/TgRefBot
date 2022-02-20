@@ -46,9 +46,10 @@ async def get_id_channel(message: Message, state: FSMContext):
         return
     group_from_db = Groups.get(id_group=str(channel.id))
     if not group_from_db:
+        link = await bot.create_chat_invite_link(channel.id, creates_join_request=True)
         Groups(
             id_group=str(channel.id),
-            link_group=channel.invite_link,
+            link_group=link,
             name_group=channel.full_name
         )
         commit()
